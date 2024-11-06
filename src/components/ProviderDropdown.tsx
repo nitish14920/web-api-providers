@@ -34,24 +34,32 @@ const APIListWrapper = styled.ul<{ isOpen: boolean }>`
   list-style: none;
   padding: ${({ isOpen }) => (isOpen ? "10px 20px" : "0")};
   margin: 0;
+
+  /* Animation properties */
   max-height: ${({ isOpen }) => (isOpen ? "500px" : "0")};
-  overflow: auto;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  overflow: hidden; /* Prevent overflow during animation */
+
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")}; /* Fade effect */
+
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease; /* Add opacity transition */
 `;
 
 const APIItem = styled.li`
+  display: flex;
   padding: 8px 0;
   cursor: pointer;
   color: #ffffff;
-
+  align-items: center;
+  gap: 10px;
   &:hover {
     color: #007bff;
     text-decoration: underline;
   }
 `;
 
-const LoadingMessage = styled.p`
+const LoadingMessage = styled.div`
   font-style: italic;
+  margin: 10px;
 `;
 
 const ErrorMessage = styled.p`
@@ -59,7 +67,7 @@ const ErrorMessage = styled.p`
   font-style: italic;
 `;
 
-interface ProviderAccordionProps {
+interface ProviderDropdownProps {
   providerName: string; // Changed to be more descriptive
   onCloseAccordion: () => void; // Changed to be more descriptive
 }
@@ -68,6 +76,7 @@ interface API {
   title: string;
   providerName: string;
   serviceName: string;
+  logo: string;
 }
 
 const transformApiResponse = (apiData: Record<string, any>): API[] => {
@@ -77,11 +86,14 @@ const transformApiResponse = (apiData: Record<string, any>): API[] => {
       title: value.info.title,
       providerName,
       serviceName,
+      logo: value.info["x-logo"].url,
+      swaggerUrl: value.swaggerUrl,
+      swaggerYamlUrl: value.swaggerYamlUrl,
     };
   });
 };
 
-const ProviderAccordion: React.FC<ProviderAccordionProps> = React.memo(
+const ProviderDropdown: React.FC<ProviderDropdownProps> = React.memo(
   ({ providerName, onCloseAccordion }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [apiList, setApiList] = useState<API[]>([]);
@@ -96,7 +108,7 @@ const ProviderAccordion: React.FC<ProviderAccordionProps> = React.memo(
     useEffect(() => {
       if (isOpen && apiList.length === 0 && !isLoading && !errorMessage) {
         setIsLoading(true);
-        fetchAPIsByProvider(providerName) // Updated function name
+        fetchAPIsByProvider(providerName)
           .then((apiData) => {
             const transformedList = transformApiResponse(apiData);
             setApiList(transformedList);
@@ -143,31 +155,29 @@ const ProviderAccordion: React.FC<ProviderAccordionProps> = React.memo(
           <ProviderLabel>{providerName}</ProviderLabel>
           <ToggleIcon isOpen={isOpen}>▶</ToggleIcon>
         </AccordionHeader>
-        {isOpen && (
-          <>
-            {isLoading ? (
-              <LoadingMessage>Loading APIs...</LoadingMessage>
-            ) : errorMessage ? (
-              <ErrorMessage>{errorMessage}</ErrorMessage>
-            ) : apiList.length > 0 ? (
-              <APIListWrapper isOpen={isOpen}>
-                {apiList.map(({ title, providerName, serviceName }, index) => (
-                  <APIItem
-                    key={index}
-                    onClick={() => handleAPIClick(providerName, serviceName)}
-                  >
-                    {title}
-                  </APIItem>
-                ))}
-              </APIListWrapper>
-            ) : (
-              <LoadingMessage>No APIs available.</LoadingMessage>
-            )}
-          </>
-        )}
+        <APIListWrapper isOpen={isOpen}>
+          {isLoading ? (
+            <LoadingMessage>Loading APIs...</LoadingMessage>
+          ) : errorMessage ? (
+            <ErrorMessage>{errorMessage}</ErrorMessage>
+          ) : apiList.length > 0 ? (
+            apiList.map(({ title, providerName, serviceName, logo }, index) => (
+              <APIItem
+                key={index}
+                onClick={() => handleAPIClick(providerName, serviceName)}
+              >
+                <img height="30px" width="30px" src={logo} alt="" />
+
+                {title}
+              </APIItem>
+            ))
+          ) : (
+            <LoadingMessage>No APIs available.</LoadingMessage>
+          )}
+        </APIListWrapper>
       </AccordionWrapper>
     );
   }
 );
 
-export default ProviderAccordion;
+export default ProviderDropdown;
