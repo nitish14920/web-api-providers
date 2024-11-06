@@ -1,28 +1,29 @@
-# Web API Explorer App
+# Web API Explorer Application
 
-This is the **Web API Explorer App**, a React-based application that allows users to explore various APIs provided by different providers. The app lists APIs in an accordion-style interface, enabling users to browse APIs from multiple providers, view detailed information about each API, and navigate to specific API documentation.
+Welcome to the **Web API Explorer Application**—a React-based tool that enables users to discover a variety of APIs from different providers. The application features an accordion-style layout, allowing users to navigate through APIs from multiple sources, access detailed information about each API, and link directly to specific API documentation.
 
-The project is built using **React**, **React Router**, **styled-components**, and **TypeScript** with **Webpack** as the module bundler.
+This project is developed using **React**, **React Router**, **styled-components**, and **TypeScript**.
 
 ---
 
 ## Live Demo
 
-You can access the deployed version of the project here:  
+You can view the live version of the application here:  
 [Web API Explorer App](https://web-api-providers.vercel.app/)
 
 ---
 
 ## Features
 
-- View and explore multiple APIs from different providers.
-- Accordion-style UI to expand and collapse the list of APIs.
-- Navigate to detailed API information.
-- Markdown rendering for API descriptions with syntax highlighting.
-- Styled using **styled-components** for a clean, modern UI.
-- Deployed on **Netlify** for easy access.
+- Explore and view numerous APIs from various providers.
+- Accordion-style interface for expanding and collapsing the API list.
+- Access detailed information for each API.
+- Markdown rendering for API descriptions, complete with syntax highlighting.
+- Styled with **styled-components** for a sleek, modern appearance.
+- Deployed on **Netlify** for straightforward access.
 
 ---
+
 
 ## Getting Started
 
@@ -36,4 +37,22 @@ Make sure you have the following installed:
 - **npm** (comes with Node.js)
 
 
+### Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone git@github.com:nitish14920/web-api-providers.git
+   cd web-api-providers
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+
+### Running the Application
+
+ **To run the project locally on port 5173, use the following command:**
+   ```bash
+   npm run dev 
+
+Open your browser and go to: http://localhost:5173
 
