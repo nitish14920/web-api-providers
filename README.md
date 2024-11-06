@@ -1,39 +1,39 @@
-# Web API Explorer Application
+# Web API Explorer App
 
-Welcome to the **Web API Explorer Application**—a React-based tool that enables users to discover a variety of APIs from different providers. The application features an accordion-style layout, allowing users to navigate through APIs from multiple sources, access detailed information about each API, and link directly to specific API documentation.
+This is the **Web API Explorer App**, a React-based application that allows users to explore various APIs provided by different providers. The app lists APIs in an accordion-style interface, enabling users to browse APIs from multiple providers, view detailed information about each API, and navigate to specific API documentation.
 
-This project is developed using **React**, **React Router**, **styled-components**, and **TypeScript**, with **Webpack** serving as the module bundler.
+The project is built using **React**, **React Router**, **styled-components**, and **TypeScript** with **Webpack** as the module bundler.
 
 ---
 
 ## Live Demo
 
-You can view the live version of the application here:  
+You can access the deployed version of the project here:  
 [Web API Explorer App](https://web-api-providers.vercel.app/)
 
 ---
 
 ## Features
 
-- Explore and view numerous APIs from various providers.
-- Accordion-style interface for expanding and collapsing the API list.
-- Access detailed information for each API.
-- Markdown rendering for API descriptions, complete with syntax highlighting.
-- Styled with **styled-components** for a sleek, modern appearance.
-- Deployed on **Netlify** for straightforward access.
+- View and explore multiple APIs from different providers.
+- Accordion-style UI to expand and collapse the list of APIs.
+- Navigate to detailed API information.
+- Markdown rendering for API descriptions with syntax highlighting.
+- Styled using **styled-components** for a clean, modern UI.
+- Deployed on **Netlify** for easy access.
 
 ---
 
 ## Getting Started
 
-Follow the steps below to set up and run the application locally.
+Follow the instructions below to set up and run the project locally.
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Make sure you have the following installed:
 
-- **Node.js** (version 16 or higher recommended)  
-- **npm** (included with Node.js)
+- **Node.js** (v16+ recommended)  
+- **npm** (comes with Node.js)
 
 ---
 
@@ -43,3 +43,28 @@ Ensure you have the following installed:
    ```bash
    git clone https://github.com/Anujsharma2590/web-api-explorer-app.git
    cd web-api-explorer-app
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+
+### Running the Application
+
+ **To run the project locally on port 3000, use the following command:**
+   ```bash
+   npm start 
+
+This will start the webpack development server. Open your browser and go to: http://localhost:3000
+
+```
+### Technologies Used
+- **React:** Frontend UI framework
+- **React Router:** For routing between pages
+- **TypeScript:** Static type-checking
+- **styled-components:** Styling solution using component-level styles
+- **React Markdown + rehype-highlight:** Render and highlight markdown-based API descriptions
+- **Axios:** HTTP client for fetching data
+
+---
+
+
