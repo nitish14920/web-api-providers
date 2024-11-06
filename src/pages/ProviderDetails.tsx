@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import { APIItem } from "../types/apiTypes";
 import ProviderSideBar from "../components/ProviderSideBar";
-import { fetchAPIsByProvider } from "../services/apiServices"; // Updated function name
+import { fetchAPIsByProvider } from "../services/apiServices";
 
 const PageContainer = styled.div`
   padding: 40px;
@@ -109,7 +109,7 @@ const ProviderDetails: React.FC = () => {
 
   useEffect(() => {
     if (provider) {
-      fetchAPIsByProvider(provider) // Updated function name
+      fetchAPIsByProvider(provider)
         .then((data) => {
           setApiDetails(data);
         })
@@ -195,4 +195,4 @@ const ProviderDetails: React.FC = () => {
   );
 };
 
-export default ProviderDetails; // Updated component name
+export default ProviderDetails;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import { fetchAPIsByProvider } from "../services/apiServices"; // Updated function name
+import { fetchAPIsByProvider } from "../services/apiServices";
 import { useNavigate } from "react-router-dom";
 
 const AccordionWrapper = styled.div<{ isOpen: boolean }>`
@@ -26,6 +26,7 @@ const ProviderLabel = styled.span`
 `;
 
 const ToggleIcon = styled.span<{ isOpen: boolean }>`
+  font-size: 12px;
   transition: transform 0.3s ease;
   transform: rotate(${({ isOpen }) => (isOpen ? "90deg" : "0deg")});
 `;
@@ -68,8 +69,8 @@ const ErrorMessage = styled.p`
 `;
 
 interface ProviderDropdownProps {
-  providerName: string; // Changed to be more descriptive
-  onCloseAccordion: () => void; // Changed to be more descriptive
+  providerName: string;
+  onCloseAccordion: () => void;
 }
 
 interface API {
